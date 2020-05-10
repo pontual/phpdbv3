@@ -1,0 +1,11 @@
+vendor/
+kitweb_v2_db_production.php
+
+*.JPG
+*.jpg
+
+*secret*
+
+*~
+\#*
+.\#*
