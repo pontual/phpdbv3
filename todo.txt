@@ -1,3 +1,4 @@
-[  ] checkboxes on produto edit page to select categories it belongs to
-[  ] painel admin pages automatically decrypt cv
-[  ] when inserting or updating produto, auto generate normalizado, sufixo_jpg for img
+[OK] checkboxes on produto edit page to select categories it belongs to
+[NO] painel admin pages automatically decrypt cv (NO: cv is handled automatically by uploading Excel) 
+[  ] when inserting or updating produto, auto generate normalizado, sufixo_jpg for image
+[  ] shrink form fields width

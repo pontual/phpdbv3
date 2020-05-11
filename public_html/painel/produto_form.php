@@ -35,9 +35,27 @@
             <form method="post" action="produto_exec.php" class="pure-form pure-form-aligned">
 	        <input type="hidden" name="crud_action" value="<?= $crud_action ?>">
 	        <input type="hidden" name="produto_id" value="<?= $produto_id ?>">
+
                 <fieldset>
-                    <div class="field">
-                        <label class="label">Código</label>
+                    <h5 class="title is-5">Categorias do produto</h5>
+                    <h6 class="title is-6">Importante: se for necessário criar uma categoria nova, esta página precisa ser recarregada</h5>
+                        <?php
+                        foreach ($dbh->query("select id, nome from v3_categoriadeproduto order by nome") as $row) {
+                        ?>
+                            <div class="field">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="produto_cat[]" value="<?= $row['id'] ?>">
+                                    <?= $row['nome'] ?>
+                                </label>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                        <hr>
+                        <h5 class="title is-5">Informações do produto</h5>
+
+                        <div class="field">
+                            <label class="label">Código</label>
                         <div class="control">
                             <input class="input" name="codigo" value="<?= $codigo ?>">
                         </div>
@@ -90,19 +108,6 @@
 	            </div>
 
                     <hr>
-                    <h5 class="title is-5">Categorias do produto</h5>
-                    <?php
-                    foreach ($dbh->query("select id, nome from v3_categoriadeproduto order by nome") as $row) {
-                    ?>
-                        <div class="field">
-                            <label class="checkbox">
-                                <input type="checkbox" name="produto_cat[]" value="<?= $row['id'] ?>">
-                                <?= $row['nome'] ?>
-                            </label>
-                        </div>
-                    <?php
-                    }
-                    ?>
 	            <input type="submit" class="button is-primary">
                 </fieldset>
             </form>
