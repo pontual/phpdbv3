@@ -4,7 +4,7 @@ include("header.php");
 
 $dbh = getdbh();
 
-$sql = "select id, nome from v3_categoriadeproduto order by nome";
+$sql = "select id, nome, inativo from v3_categoriadeproduto order by inativo, nome";
 ?>
 
 <h3 class="title is-3">Categorias</h3>
@@ -15,6 +15,7 @@ $sql = "select id, nome from v3_categoriadeproduto order by nome";
     <thead>
         <tr>
             <th>Nome</th>
+            <th>Inativo?</th>
         </tr>
     </thead>
     
@@ -24,6 +25,7 @@ $sql = "select id, nome from v3_categoriadeproduto order by nome";
         ?>
             <tr>
                 <td><a href="categoria_form.php?categoria_id=<?= $row['id'] ?>"><?= $row['nome'] ?></a></td>
+                <td><?= $row['inativo'] == 1 ? "inativo" : "" ?></a></td>
             </tr>            
         <?php 
         }

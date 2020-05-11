@@ -3,8 +3,9 @@ require("../../db_cls.php");
 include("header.php");
 ?>
 
-<h3 class="title is-3">Edição de Categoria</h3>
+<h3 class="title is-3">Processamento de Categoria</h3>
 <pre>
+
 <?php
 $dbh = getdbh();
 

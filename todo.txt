@@ -1,5 +1,9 @@
 [OK] checkboxes on produto edit page to select categories it belongs to
 [NO] painel admin pages automatically decrypt cv (NO: cv is handled automatically by uploading Excel) 
+[OK] shrink form fields width
+[NO] show that categoria is inativo on produto_form
+[NO] show produto in list even if it is not assigned to any category (NO: made separate list)
+
 [  ] when inserting or updating produto, auto generate normalizado, sufixo_jpg for image
-[  ] shrink form fields width
-[  ] show that categoria is inativo on produto_form
+[  ] delete categoria, produto (first remove from v3_produto_categoria)
+

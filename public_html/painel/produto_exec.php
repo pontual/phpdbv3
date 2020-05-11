@@ -1,6 +1,12 @@
 <?php
 require("../../db_cls.php");
+include("header.php");
+?>
 
+<h3 class="title is-3">Processamento de Produto</h3>
+<pre>
+
+<?php
 $dbh = getdbh();
 
 $crud_action = $_POST['crud_action'];
@@ -16,12 +22,12 @@ $sql_arguments = [':codigo' => $_POST['codigo'],
                   ':inativo' => (int) ($_POST['inativo'] ?? "0")];
 
 if ($crud_action == "create") {
-    echo "Insert";
+    echo "Criando {$_POST['codigo']}\n\n";
 
     $sql = "insert into v3_produto (codigo, nome, detalhes, peso, medidas, caixa, inativo) values (:codigo, :nome, :detalhes, :peso, :medidas, :caixa, :inativo)";
     
 } elseif ($crud_action == "update") {
-    echo "Update $produto_id";
+    echo "Atualizando {$_POST['codigo']}\n\n";
 
     $sql = "update v3_produto set codigo = :codigo, nome = :nome, detalhes = :detalhes, peso = :peso, medidas = :medidas, caixa = :caixa, inativo = :inativo where id = :id";
     $sql_arguments = array_merge($sql_arguments, [':id' => $produto_id]);
@@ -58,3 +64,8 @@ if ($produto_cat) {
     }
     $dbh->commit();
 }
+
+echo "Operação concluída.\n";
+echo "</pre>";
+
+include("footer.php");
