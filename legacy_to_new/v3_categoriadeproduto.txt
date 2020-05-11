@@ -1,4 +1,4 @@
-INSERT INTO `v3_categoria` (`id`, `nome`, `inativo`) VALUES
+INSERT INTO `v3_categoriadeproduto` (`id`, `nome`, `inativo`) VALUES
 (4, 'Alicates', 0),
 (6, 'Artigos Religiosos', 0),
 (7, 'Balanças', 0),
