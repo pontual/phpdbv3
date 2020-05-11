@@ -7,30 +7,24 @@ $crud_action = $_POST['crud_action'];
 $produto_id = (int) ($_POST['produto_id'] ?? "0");
 $produto_cat = $_POST['produto_cat'] ?? null;
 
+$sql_arguments = [':codigo' => $_POST['codigo'],
+                  ':nome' => $_POST['nome'],
+                  ':detalhes' => $_POST['detalhes'],
+                  ':peso' => $_POST['peso'],
+                  ':medidas' => $_POST['medidas'],
+                  ':caixa' => (int) $_POST['caixa'],
+                  ':inativo' => (int) ($_POST['inativo'] ?? "0")];
+
 if ($crud_action == "create") {
     echo "Insert";
 
     $sql = "insert into v3_produto (codigo, nome, detalhes, peso, medidas, caixa, inativo) values (:codigo, :nome, :detalhes, :peso, :medidas, :caixa, :inativo)";
-    $sql_arguments = [':codigo' => $_POST['codigo'],
-                      ':nome' => $_POST['nome'],
-                      ':detalhes' => $_POST['detalhes'],
-                      ':peso' => $_POST['peso'],
-                      ':medidas' => $_POST['medidas'],
-                      ':caixa' => (int) $_POST['caixa'],
-                      ':inativo' => (int) ($_POST['inativo'] ?? "0")];
     
 } elseif ($crud_action == "update") {
     echo "Update $produto_id";
 
     $sql = "update v3_produto set codigo = :codigo, nome = :nome, detalhes = :detalhes, peso = :peso, medidas = :medidas, caixa = :caixa, inativo = :inativo where id = :id";
-    $sql_arguments = [':codigo' => $_POST['codigo'],
-                      ':nome' => $_POST['nome'],
-                      ':detalhes' => $_POST['detalhes'],
-                      ':peso' => $_POST['peso'],
-                      ':medidas' => $_POST['medidas'],
-                      ':caixa' => (int) $_POST['caixa'],
-                      ':inativo' => (int) ($_POST['inativo'] ?? "0"),
-                      ':id' => $produto_id];
+    $sql_arguments = array_merge($sql_arguments, [':id' => $produto_id]);
     
     // delete from v3_produto_categoria
     try {
@@ -53,11 +47,14 @@ try {
 // add to v3_produto_categoria
 if ($produto_cat) {
     $dbh->beginTransaction();
+
+    $sql = "insert into v3_produto_categoria (produto_id, categoriadeproduto_id) values (:produto_id, :categoria_id)";
+    $sth = $dbh->prepare($sql);
     
-    foreach ($produto_cat as $id_str) {
-        $id = (int) $id_str;
-        echo $id;
+    foreach ($produto_cat as $cat_id_str) {
+        $cat_id = (int) $cat_id_str;
+        $sth->execute([":produto_id" => $produto_id,
+                       ":categoria_id" => $cat_id]);
     }
     $dbh->commit();
 }
-
