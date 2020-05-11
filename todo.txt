@@ -2,3 +2,4 @@
 [NO] painel admin pages automatically decrypt cv (NO: cv is handled automatically by uploading Excel) 
 [  ] when inserting or updating produto, auto generate normalizado, sufixo_jpg for image
 [  ] shrink form fields width
+[  ] show that categoria is inativo on produto_form
