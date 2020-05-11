@@ -59,7 +59,7 @@ if (count($uncategorized) > 0) {
 }
 ?>
 
-<h5 class="title is-5">Produtos com categorias</h5>
+<h5 class="title is-5">Produtos categorizados</h5>
 <table class="table is-striped">
     <thead>
         <tr>
