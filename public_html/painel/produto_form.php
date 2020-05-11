@@ -8,7 +8,7 @@ $dbh = getdbh();
 
 if ($produto_id != 0) {
     $crud_action = 'update';
-    $sql = "select codigo, nome, detalhes, peso, medidas, caixa, inativo from v3_produto where id = :id";
+    $sql = "select codigo, nome, detalhes, peso, medidas, caixa, sufixo_jpg, inativo from v3_produto where id = :id";
     $sth = $dbh->prepare($sql);
     $sth->execute([":id" => $produto_id]);
 
@@ -24,6 +24,7 @@ $detalhes = $row['detalhes'] ?? "";
 $peso = $row['peso'] ?? "";
 $medidas = $row['medidas'] ?? "";
 $caixa = $row['caixa'] ?? "";
+$sufixo_jpg = $row['sufixo_jpg'] ?? "";
 
 // existing categorias
 $categorias = [];
@@ -82,6 +83,20 @@ $categorias = [];
                 </div>
 
                 <div class="field">
+                    <label class="label">Foto</label>
+                    <div class="control">
+                        <?php
+                        if ($sufixo_jpg) {
+                        ?>
+                            <img src="/fotos/<?= $codigo ?>_<?= $sufixo_jpg ?>_thumb.jpg" alt="foto">
+                        <?php
+                        }
+                        ?>
+                        <input class="input" type="file" name="arquivo_foto">
+                    </div>
+                </div>
+
+                <div class="field">
 	            <label class="checkbox">
 	                <input type="checkbox"
                                name="inativo"
@@ -116,7 +131,7 @@ $categorias = [];
                                    value="<?= $row['id'] ?>"
                                    <?= in_array($row['id'], $categorias) ? "checked" : "" ?>
                             >
-                            <?= $row['nome'] ?>
+                            <?= $row['nome'] ?> <?= $row['inativo'] == 1 ? "(inativo)" : "" ?>
                         </label>
                     </div>
                 <?php

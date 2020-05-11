@@ -3,7 +3,6 @@
 [OK] shrink form fields width
 [NO] show that categoria is inativo on produto_form
 [NO] show produto in list even if it is not assigned to any category (NO: made separate list)
-
-[  ] when inserting or updating produto, auto generate normalizado, sufixo_jpg for image
+[NO] when inserting or updating produto, auto generate normalizado, sufixo_jpg for image (NO: normalize in JS client)
+[  ] upload new photo on create or update produto
 [  ] delete categoria, produto (first remove from v3_produto_categoria)
-
