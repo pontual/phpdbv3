@@ -27,4 +27,6 @@ class PdoWrapper {
   }
 }
 
-?>
+function getdbh() {
+    return (new PdoWrapper())->getConnection();
+}
