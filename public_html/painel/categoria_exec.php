@@ -8,7 +8,7 @@ $categoria_id = (int) ($_POST['categoria_id'] ?? "0");
 
 
 if ($crud_action == "create") {    
-    echo "Insert $nome, $detalhes";
+    echo "Insert";
 
     $sql = "insert into v3_categoriadeproduto (nome, detalhes, publico) values (:nome, :detalhes, :publico)";
     $sql_arguments = [':nome' => $_POST['nome'],

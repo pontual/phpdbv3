@@ -1,0 +1,7 @@
+[  ] deleting categoria removes produto_categoria links but does not remove produto
+[  ] deleting produto removes produto_categoria links
+
+          create | read | update | delete
+	  -------+------+--------+-------
+categoria   OK   |      |   OK   |
+produto          |      |        |

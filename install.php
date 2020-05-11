@@ -16,21 +16,28 @@ $echo_info = "Criando (se nao existe) a tabela ";
 echo $echo_info . "v3_categoriadeproduto\n";
 $dbh->exec("CREATE TABLE IF NOT EXISTS `v3_categoriadeproduto` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `nome` varchar(255) NOT NULL UNIQUE, `detalhes` text, `publico` bool NOT NULL)");
 
+// Editable
+
 // codigo
 // nome
-// normalizado
 // detalhes
-// sufixo_jpg
 // peso
 // medidas
+// caixa
+// publico
+
+
+// Auto-generated
+
+// normalizado
+// sufixo_jpg
+
 // cv
 // cv_atualizado
 // disponivel_ptl
 // reservado_ptl
 // disponivel_uni
 // reservado_uni
-// caixa
-// publico
 echo $echo_info . "v3_produto\n";
 $dbh->exec("CREATE TABLE IF NOT EXISTS `v3_produto` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `codigo` varchar(63) NOT NULL UNIQUE, `nome` varchar(255) NOT NULL, `normalizado` varchar(255), `detalhes` text, `sufixo_jpg` varchar(31), `peso` varchar(63), `medidas` varchar(63), `cv` varchar(255), `cv_atualizado` datetime(0), `disponivel_ptl` integer, `reservado_ptl` integer, `disponivel_uni` integer, `reservado_uni` integer, `caixa` integer, `publico` bool NOT NULL)");
 

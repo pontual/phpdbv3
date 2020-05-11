@@ -7,14 +7,14 @@
         <?php
         require("../../db_cls.php");
         
-        $categoria_id = (int) ($_GET['categoria_id'] ?? '0');
+        $produto_id = (int) ($_GET['produto_id'] ?? '0');
 
-        if ($categoria_id != 0) {
+        if ($produto_id != 0) {
             $crud_action = 'update';
             $dbh = getdbh();
-            $sql = "select nome, detalhes, publico from v3_categoriadeproduto where id = :id";
+            $sql = "select codigo, nome, detalhes, peso, medidas, caixa, publico from v3_produto where id = :id";
             $sth = $dbh->prepare($sql);
-            $sth->execute([":id" => $categoria_id]);
+            $sth->execute([":id" => produto_id]);
 
             $row = $sth->fetch();
         } else {
@@ -22,14 +22,19 @@
             $row = null;
         }
 
+        $codigo = $row['codigo'] ?? "";
         $nome = $row['nome'] ?? "";
         $detalhes = $row['detalhes'] ?? "";
+        $peso = $row['peso'] ?? "";
+        $medidas = $row['medidas'] ?? "";
+        $caixa = $row['caixa'] ?? "";
+
         ?>
         <div class="container">
 
-            <form method="post" action="categoria_exec.php" class="pure-form pure-form-aligned">
+            <form method="post" action="produto_exec.php" class="pure-form pure-form-aligned">
 	        <input type="hidden" name="crud_action" value="<?= $crud_action ?>">
-	        <input type="hidden" name="categoria_id" value="<?= $categoria_id ?>">
+	        <input type="hidden" name="produto_id" value="<?= $produto_id ?>">
                 <fieldset>
                     <div class="field">
                         <label class="label">Nome</label>
