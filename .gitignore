@@ -14,4 +14,7 @@ kitweb_v2_db_production.php
 *.xls
 *.XLS
 
+*.sql
+*.SQL
+
 data/
