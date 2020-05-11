@@ -12,9 +12,9 @@ $echo_info = "Criando (se nao existe) a tabela ";
 
 // nome
 // detalhes
-// publico
+// inativo
 echo $echo_info . "v3_categoriadeproduto\n";
-$dbh->exec("CREATE TABLE IF NOT EXISTS `v3_categoriadeproduto` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `nome` varchar(255) NOT NULL UNIQUE, `detalhes` text, `publico` bool NOT NULL)");
+$dbh->exec("CREATE TABLE IF NOT EXISTS `v3_categoriadeproduto` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `nome` varchar(255) NOT NULL UNIQUE, `detalhes` text, `inativo` bool NOT NULL)");
 
 // Editable
 
@@ -24,7 +24,7 @@ $dbh->exec("CREATE TABLE IF NOT EXISTS `v3_categoriadeproduto` (`id` integer AUT
 // peso
 // medidas
 // caixa
-// publico
+// inativo
 
 
 // Auto-generated
@@ -39,7 +39,7 @@ $dbh->exec("CREATE TABLE IF NOT EXISTS `v3_categoriadeproduto` (`id` integer AUT
 // disponivel_uni
 // reservado_uni
 echo $echo_info . "v3_produto\n";
-$dbh->exec("CREATE TABLE IF NOT EXISTS `v3_produto` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `codigo` varchar(63) NOT NULL UNIQUE, `nome` varchar(255) NOT NULL, `normalizado` varchar(255), `detalhes` text, `sufixo_jpg` varchar(31), `peso` varchar(63), `medidas` varchar(63), `cv` varchar(255), `cv_atualizado` datetime(0), `disponivel_ptl` integer, `reservado_ptl` integer, `disponivel_uni` integer, `reservado_uni` integer, `caixa` integer, `publico` bool NOT NULL)");
+$dbh->exec("CREATE TABLE IF NOT EXISTS `v3_produto` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `codigo` varchar(63) NOT NULL UNIQUE, `nome` varchar(255) NOT NULL, `normalizado` varchar(255), `detalhes` text, `sufixo_jpg` varchar(31), `peso` varchar(63), `medidas` varchar(63), `cv` varchar(255), `cv_atualizado` datetime(0), `disponivel_ptl` integer, `reservado_ptl` integer, `disponivel_uni` integer, `reservado_uni` integer, `caixa` integer, `inativo` bool NOT NULL)");
 
 // produto_id
 // categoriadeproduto_id

@@ -10,18 +10,18 @@ $categoria_id = (int) ($_POST['categoria_id'] ?? "0");
 if ($crud_action == "create") {    
     echo "Insert";
 
-    $sql = "insert into v3_categoriadeproduto (nome, detalhes, publico) values (:nome, :detalhes, :publico)";
+    $sql = "insert into v3_categoriadeproduto (nome, detalhes, inativo) values (:nome, :detalhes, :inativo)";
     $sql_arguments = [':nome' => $_POST['nome'],
                       ':detalhes' => $_POST['detalhes'],
-                      ':publico' => (int) ($_POST['publico'] ?? "0")];
+                      ':inativo' => (int) ($_POST['inativo'] ?? "0")];
     
 } elseif ($crud_action == "update") {
     echo "Update $categoria_id";
 
-    $sql = "update v3_categoriadeproduto set nome = :nome, detalhes = :detalhes, publico = :publico where id = :id";
+    $sql = "update v3_categoriadeproduto set nome = :nome, detalhes = :detalhes, inativo = :inativo where id = :id";
     $sql_arguments = [':nome' => $_POST['nome'],
                       ':detalhes' => $_POST['detalhes'],
-                      ':publico' => (int) ($_POST['publico'] ?? "0"),
+                      ':inativo' => (int) ($_POST['inativo'] ?? "0"),
                       ':id' => $categoria_id];
 }
 

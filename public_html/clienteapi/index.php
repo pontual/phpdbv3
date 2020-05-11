@@ -47,7 +47,7 @@ $app->get('/produtos/', function (Request $request, Response $response, $args) {
 $app->get('/menu/', function (Request $request, Response $response, $args) {
     $dbh = getdbh();
 
-    $sth = $dbh->prepare("select id, nome from v3_categoriadeproduto where publico = 1 order by nome");
+    $sth = $dbh->prepare("select id, nome from v3_categoriadeproduto where inativo = 0 order by nome");
     $sth->execute();
     
     $response->getBody()->write(json_encode($sth->fetchAll()));
@@ -60,7 +60,7 @@ $app->get('/menu/', function (Request $request, Response $response, $args) {
 $app->get('/categorias/{id}/', function (Request $request, Response $response, $args) {
     $dbh = getdbh();
 
-    $sth = $dbh->prepare("select codigo, nome, normalizado, sufixo_jpg, medidas, cv, disponivel_ptl, reservado_ptl, disponivel_uni, reservado_uni from v3_produto as p inner join v3_produto_categoria as pc on p.id = pc.produto_id and p.publico = 1 order by codigo");
+    $sth = $dbh->prepare("select codigo, nome, normalizado, sufixo_jpg, medidas, cv, disponivel_ptl, reservado_ptl, disponivel_uni, reservado_uni from v3_produto as p inner join v3_produto_categoria as pc on p.id = pc.produto_id and p.inativo = 0 order by codigo");
     $sth->execute([':id' => $args['id']]);
 
     $response->getBody()->write(json_encode($sth->fetchAll()));
