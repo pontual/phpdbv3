@@ -1,0 +1,2 @@
+[  ] checkboxes on produto edit page to select categories it belongs to
+[  ] painel admin pages automatically decrypt cv
