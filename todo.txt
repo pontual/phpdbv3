@@ -6,3 +6,4 @@
 [NO] when inserting or updating produto, auto generate normalizado, sufixo_jpg for image (NO: normalize in JS client)
 [  ] upload new photo on create or update produto
 [  ] delete categoria, produto (first remove from v3_produto_categoria)
+[  ] encrypt cv, client password
